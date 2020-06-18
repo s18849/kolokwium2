@@ -54,9 +54,14 @@ namespace kolos2.Models
                 opt.Property(p => p.IdTeam)
                 .ValueGeneratedOnAdd();
 
+                opt.Property(p => p.TeamName)
+               .HasMaxLength(30)
+               .IsRequired();
+
                 opt.HasMany(p => p.Championship_Teams)
                .WithOne(p => p.Team)
                .HasForeignKey(p => p.IdTeam);
+
 
                 opt.HasMany(p => p.Player_Teams)
                .WithOne(p => p.Team)
